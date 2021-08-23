@@ -2,6 +2,8 @@ package com.tripmate.navigation_keepstate_poc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -60,25 +62,47 @@ class MainActivity : AppCompatActivity() {
             ft.hide(fragment3)
         }
 
-
         // Show  current Fragment
         if (tag == TAG_FRAGMENT1) {
             if (fragment1 != null) {
                 ft.show(fragment1)
+                showEnable(binding.btnFragment1)
             }
         }
         if (tag == TAG_FRAGMENT2) {
+
             if (fragment2 != null) {
                 ft.show(fragment2)
+                showEnable(binding.btnFragment2)
             }
         }
         if (tag == TAG_FRAGMENT3) {
             if (fragment3 != null) {
                 ft.show(fragment3)
+                showEnable(binding.btnFragment3)
             }
         }
 
         ft.commitAllowingStateLoss()
+    }
+
+    fun showEnable(falseButton : View){
+        binding.btnFragment1.isEnabled = true
+        binding.btnFragment2.isEnabled = true
+        binding.btnFragment3.isEnabled = true
+
+        when(falseButton){
+            binding.btnFragment1 -> {
+                binding.btnFragment1.isEnabled = false
+            }
+            binding.btnFragment2 ->{
+                binding.btnFragment2.isEnabled = false
+            }
+            binding.btnFragment3 ->{
+                binding.btnFragment3.isEnabled = false
+            }
+
+        }
     }
 
     override fun onDestroy() {

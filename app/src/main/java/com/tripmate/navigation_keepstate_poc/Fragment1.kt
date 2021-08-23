@@ -1,6 +1,7 @@
 package com.tripmate.navigation_keepstate_poc
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,12 +22,15 @@ class Fragment1 : Fragment() {
         val view = inflater.inflate(R.layout.fragment_1, container, false)
         recyclerView = view.findViewById(R.id.recyclerView)
 
+        Log.d("MainActivity" , "Fragment1 onCreateView ")
+
         dataSet(100)
 
         return view
     }
 
     fun dataSet(n : Int){
+        Log.d("MainActivity" , "Fragment1 dataSet ")
         var a = 0
 
         for(i in 0..n step 1){
